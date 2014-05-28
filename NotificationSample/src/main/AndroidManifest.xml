@@ -18,7 +18,7 @@
         </activity>
 
         <service
-            android:name="com.notificationsample.notificationsample.CaptureShreen"
+            android:name="com.notificationsample.notificationsample.CaptureScreen"
             android:enabled="true"
             android:exported="true" >
         </service>
