@@ -39,11 +39,11 @@ public class CaptureScreen extends Service {
         Intent intent = new Intent(this, MainActivity.class);
 
         intent.putExtra("text", "Notification Activity");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(this, 0, intent,
-                        PendingIntent.FLAG_CANCEL_CURRENT);
+                        PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setSmallIcon(R.drawable.ic_launcher);
