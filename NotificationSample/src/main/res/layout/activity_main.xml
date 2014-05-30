@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/flat_panel" />
     <Button
+        android:text="@string/take_picture"
         android:id="@+id/take_picture"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

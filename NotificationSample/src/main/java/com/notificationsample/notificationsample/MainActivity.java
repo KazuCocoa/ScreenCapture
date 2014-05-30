@@ -1,6 +1,8 @@
 package com.notificationsample.notificationsample;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -8,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.notificationsample.notificationsample.R.id;
 
@@ -19,7 +20,7 @@ import java.io.FileOutputStream;
 public class MainActivity extends ActionBarActivity {
 
     private Intent it = null;
-    ImageView imageViewCapture, imageViewPreview;
+    ImageView imageViewPreview;
     Bitmap bitmap;
 
     @Override
@@ -29,12 +30,13 @@ public class MainActivity extends ActionBarActivity {
 
         Button startButton = (Button) findViewById(id.button1);
         Button stopButton = (Button) findViewById(id.button2);
+        Button takePicture = (Button) findViewById(id.take_picture);
+
         imageViewPreview = (ImageView) findViewById(R.id.ImageViewPreview);
-        imageViewCapture = (ImageView) findViewById(id.ImageViewCapture);
 
         startButton.setOnClickListener(startListener);
         stopButton.setOnClickListener(stopListener);
-        imageViewCapture.setOnClickListener(takePictureListenr);
+        takePicture.setOnClickListener(takePictureListenr);
     }
 
     private View.OnClickListener startListener = new View.OnClickListener() {
@@ -56,23 +58,15 @@ public class MainActivity extends ActionBarActivity {
 
     private View.OnClickListener takePictureListenr = new View.OnClickListener() {
         public void onClick(View v) {
-            bitmap = getBitmapOfView(imageViewCapture);
+            bitmap = getBitmapOfView(v);
             imageViewPreview.setImageBitmap(bitmap);
             createImageFromBitmap(bitmap);
+            setImage(imageViewPreview, Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
         }
     };
 
-    private Intent setServiceIntent(){
-        return it;
-    }
-
-    private Intent getServiceIntent(){
-        return it;
-    }
-
     public Bitmap getBitmapOfView(View v)
     {
-        Toast.makeText(this, "take a bitmap", Toast.LENGTH_LONG).show();
         View rootview = v.getRootView();
         rootview.setDrawingCacheEnabled(true);
         Bitmap bmp = rootview.getDrawingCache();
@@ -95,6 +89,10 @@ public class MainActivity extends ActionBarActivity {
         {
             e.printStackTrace();
         }
+    }
+
+    public void setImage(ImageView view, String filepath){
+        view.setImageBitmap(BitmapFactory.decodeFile(filepath));
     }
 
 }
