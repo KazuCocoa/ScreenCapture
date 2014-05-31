@@ -6,8 +6,13 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 
+import android.graphics.Bitmap;
 import android.os.*;
 import android.support.v4.app.NotificationCompat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class CaptureScreen extends Service {
 
@@ -53,6 +58,25 @@ public class CaptureScreen extends Service {
         builder.setContentIntent(pendingIntent);
 
         nm.notify(ID, builder.build());
+    }
+
+
+    public void createImageFromBitmap(Bitmap bmp)
+    {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
+        File file = new File( Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+        try
+        {
+            file.createNewFile();
+            FileOutputStream ostream = new FileOutputStream(file);
+            ostream.write(bytes.toByteArray());
+            ostream.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }

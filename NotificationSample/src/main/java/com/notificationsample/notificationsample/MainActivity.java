@@ -31,12 +31,16 @@ public class MainActivity extends ActionBarActivity {
         Button startButton = (Button) findViewById(id.button1);
         Button stopButton = (Button) findViewById(id.button2);
         Button takePicture = (Button) findViewById(id.take_picture);
+        Button showPicture = (Button) findViewById(id.show_picture);
+
 
         imageViewPreview = (ImageView) findViewById(R.id.ImageViewPreview);
 
         startButton.setOnClickListener(startListener);
         stopButton.setOnClickListener(stopListener);
-        takePicture.setOnClickListener(takePictureListenr);
+        takePicture.setOnClickListener(takePictureListener);
+        showPicture.setOnClickListener(showPictureListener);
+
     }
 
     private View.OnClickListener startListener = new View.OnClickListener() {
@@ -56,11 +60,15 @@ public class MainActivity extends ActionBarActivity {
         }
     };
 
-    private View.OnClickListener takePictureListenr = new View.OnClickListener() {
+    private View.OnClickListener takePictureListener = new View.OnClickListener() {
         public void onClick(View v) {
             bitmap = getBitmapOfView(v);
-            imageViewPreview.setImageBitmap(bitmap);
             createImageFromBitmap(bitmap);
+        }
+    };
+
+    private View.OnClickListener showPictureListener = new View.OnClickListener() {
+        public void onClick(View v) {
             setImage(imageViewPreview, Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
         }
     };

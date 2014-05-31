@@ -26,15 +26,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/flat_panel" />
 
-    <ImageView
-        android:id="@+id/ImageViewCapture"
-        android:text="@string/take_picture"
+    <Button
+        android:id="@+id/show_picture"
+        android:text="@string/show_picture"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/flat_panel" />
 
     <ImageView

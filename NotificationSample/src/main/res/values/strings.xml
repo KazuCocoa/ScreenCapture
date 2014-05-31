@@ -7,5 +7,5 @@
     <string name="notification">start</string>
     <string name="notification2">stop</string>
     <string name="take_picture">スクリーンキャプチャ</string>
-
+    <string name="show_picture">画像を表示する</string>
 </resources>
