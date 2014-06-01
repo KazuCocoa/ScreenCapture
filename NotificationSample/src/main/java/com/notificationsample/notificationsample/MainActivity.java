@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
         Button stopButton = (Button) findViewById(id.button2);
         Button takePicture = (Button) findViewById(id.take_picture);
         Button showPicture = (Button) findViewById(id.show_picture);
+        Button deletePicture = (Button) findViewById(id.delete_picture);
 
 
         imageViewPreview = (ImageView) findViewById(R.id.ImageViewPreview);
@@ -40,12 +41,13 @@ public class MainActivity extends ActionBarActivity {
         stopButton.setOnClickListener(stopListener);
         takePicture.setOnClickListener(takePictureListener);
         showPicture.setOnClickListener(showPictureListener);
+        deletePicture.setOnClickListener(deletePictureListener);
 
     }
 
     private View.OnClickListener startListener = new View.OnClickListener() {
         public void onClick(View v) {
-            it = new Intent(MainActivity.this, CaptureScreen.class);
+            it = new Intent(MainActivity.this, Notification.class);
             startService(it);
         }
     };
@@ -70,6 +72,12 @@ public class MainActivity extends ActionBarActivity {
     private View.OnClickListener showPictureListener = new View.OnClickListener() {
         public void onClick(View v) {
             setImage(imageViewPreview, Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+        }
+    };
+
+    private View.OnClickListener deletePictureListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            deleteImage();
         }
     };
 
@@ -102,6 +110,12 @@ public class MainActivity extends ActionBarActivity {
     public void setImage(ImageView view, String filepath){
         view.setImageBitmap(BitmapFactory.decodeFile(filepath));
     }
+
+    private void deleteImage(){
+        File file = new File( Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+        file.delete();
+    }
+
 
 }
 

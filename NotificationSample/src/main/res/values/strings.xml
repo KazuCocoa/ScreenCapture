@@ -2,10 +2,10 @@
 <resources>
 
     <string name="app_name">NotificationSample</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="notification">start</string>
     <string name="notification2">stop</string>
     <string name="take_picture">スクリーンキャプチャ</string>
     <string name="show_picture">画像を表示する</string>
+    <string name="delete_picture">削除</string>
 </resources>
