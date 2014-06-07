@@ -85,7 +85,17 @@ public class MainActivity extends ActionBarActivity {
     {
         View rootview = v.getRootView();
         rootview.setDrawingCacheEnabled(true);
-        Bitmap bmp = rootview.getDrawingCache();
+        rootview.destroyDrawingCache();
+
+        Bitmap bmp_cache = rootview.getDrawingCache();
+
+        if(bmp_cache == null){
+            return null;
+        }
+
+        Bitmap bmp = Bitmap.createBitmap(bmp_cache);
+        rootview.setDrawingCacheEnabled(false);
+
         return bmp;
     }
 

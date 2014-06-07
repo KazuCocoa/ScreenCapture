@@ -37,8 +37,8 @@ public class Notification extends Service {
         Intent intent = new Intent(Notification.this, CaptureScreen.class);
 
         intent.putExtra("text", "Notification Activity");
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(this, 0, intent,
                         PendingIntent.FLAG_CANCEL_CURRENT);

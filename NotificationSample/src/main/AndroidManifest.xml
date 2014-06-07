@@ -16,10 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.notificationsample.notificationsample.CaptureScreen"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
+        <activity android:name="com.notificationsample.notificationsample.CaptureScreen"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <service
             android:name="com.notificationsample.notificationsample.Notification"
             android:enabled="true"
