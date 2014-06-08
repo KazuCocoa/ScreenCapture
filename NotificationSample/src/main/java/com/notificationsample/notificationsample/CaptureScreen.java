@@ -4,13 +4,10 @@ package com.notificationsample.notificationsample;
 import android.app.Activity;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.os.*;
 import android.view.View;
-import android.view.ViewGroup;
 
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -33,8 +30,8 @@ public class CaptureScreen extends Activity {
         public void onClick(View v) {
             bitmap = getBitmapOfView(v);
             createImageFromBitmap(bitmap);
-
             finish();
+
         }
     };
 
@@ -42,7 +39,9 @@ public class CaptureScreen extends Activity {
     {
         //ViewGroup rootview = (ViewGroup)getWindow().getDecorView();//.findViewById(android.R.id.content);
 
-        //View rootview = this.getWindow().getDecorView();//.getRootView();
+        //View rootview = this.getWindow().getDecorView().getRootView();
+
+        //View rootview = findViewById(android.R.id.content).getRootView();
 
         View rootview = v.getRootView();
         rootview.setDrawingCacheEnabled(true);
@@ -63,13 +62,20 @@ public class CaptureScreen extends Activity {
     public void createImageFromBitmap(Bitmap bmp){
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
-        File file = new File( Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File file = new File(path, "capturedscreen.jpg");
+
         try
         {
+            //Make sure the Picture Directory exists.
+            path.mkdirs();
+
             file.createNewFile();
-            FileOutputStream ostream = new FileOutputStream(file);
-            ostream.write(bytes.toByteArray());
-            ostream.close();
+
+            FileOutputStream os = new FileOutputStream(file);
+            os.write(bytes.toByteArray());
+            os.close();
         }
         catch (Exception e)
         {

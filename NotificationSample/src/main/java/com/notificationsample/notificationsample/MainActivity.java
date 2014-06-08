@@ -71,7 +71,8 @@ public class MainActivity extends ActionBarActivity {
 
     private View.OnClickListener showPictureListener = new View.OnClickListener() {
         public void onClick(View v) {
-            setImage(imageViewPreview, Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+            File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            setImage(imageViewPreview, path + "/capturedscreen.jpg");
         }
     };
 
@@ -99,17 +100,23 @@ public class MainActivity extends ActionBarActivity {
         return bmp;
     }
 
-    public void createImageFromBitmap(Bitmap bmp)
-    {
+    public void createImageFromBitmap(Bitmap bmp){
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
-        File file = new File( Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File file = new File(path, "capturedscreen.jpg");
+
         try
         {
+            //Make sure the Picture Directory exists.
+            path.mkdirs();
+
             file.createNewFile();
-            FileOutputStream ostream = new FileOutputStream(file);
-            ostream.write(bytes.toByteArray());
-            ostream.close();
+
+            FileOutputStream os = new FileOutputStream(file);
+            os.write(bytes.toByteArray());
+            os.close();
         }
         catch (Exception e)
         {
@@ -122,7 +129,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void deleteImage(){
-        File file = new File( Environment.getExternalStorageDirectory() + "/capturedscreen.jpg");
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File file = new File(path, "capturedscreen.jpg");
         file.delete();
     }
 
