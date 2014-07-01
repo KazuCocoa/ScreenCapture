@@ -2,7 +2,7 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.2"
+    buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 9
@@ -21,4 +21,23 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:19.+'
+}
+
+task adoptVersion {
+    println "setup setting !!!"
+}
+
+beforeEvaluate { project ->
+    adoptVersion
+}
+
+afterEvaluate{ project ->
+    task setVersion << {
+        println "===================!!"
+    }
+    task rollback(dependsOn: setVersion) << {
+        //apply "PROJECT_HOME/version.properties"
+        //println "${sample.com.version1}"
+        println "finish build!!"
+    }
 }
