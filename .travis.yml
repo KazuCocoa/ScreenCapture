@@ -20,11 +20,20 @@ branches:
   only:
     - master
 
-#before_install
+before_install:
+  - android list sdk --no-ui --all --extended
+
 #install
+
 #before_script
 
-script: ./gradlew assembleDebug
+script:
+  - ./gradlew assembleDebug
 
 #after_success or after_failure
+
+#after_success:
+#  - 成果物のapkを、特定のURLへアップロードする。
+#  => apkは、常に保存しておけるわけではない。特定の領域に保存する、という対応が必要。
+
 #after_script
