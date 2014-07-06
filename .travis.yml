@@ -24,7 +24,7 @@ branches:
 #install
 #before_script
 
-script: ./gradlew assembleBuild
+script: ./gradlew assembleDebug
 
 #after_success or after_failure
 #after_script
