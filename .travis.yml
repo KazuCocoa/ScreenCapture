@@ -1,8 +1,26 @@
 language: android
 android:
   components:
-    - tools
     - build-tools-19.1.0
     - android-19
     - sysimg-19
     - extra-android-support
+
+
+# blacklist
+#branches:
+#  except:
+#    - legacy
+#    - experimental
+
+# whitelist
+branches:
+  only:
+    - master
+
+#before_install
+#install
+#before_script
+#script
+#after_success or after_failure
+#after_script
