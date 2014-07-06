@@ -33,7 +33,6 @@ script:
 #after_success or after_failure
 
 #after_success:
-#  - 成果物のapkを、特定のURLへアップロードする。
-#  => apkは、常に保存しておけるわけではない。特定の領域に保存する、という対応が必要。
+#  - upload apk files to somewhere (We should integrate other storage service or deploygate, for example.)
 
 #after_script
