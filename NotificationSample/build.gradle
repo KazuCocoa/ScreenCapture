@@ -30,14 +30,3 @@ task adoptVersion {
 beforeEvaluate { project ->
     adoptVersion
 }
-
-afterEvaluate{ project ->
-    task setVersion << {
-        println "===================!!"
-    }
-    task rollback(dependsOn: setVersion) << {
-        //apply "PROJECT_HOME/version.properties"
-        //println "${sample.com.version1}"
-        println "finish build!!"
-    }
-}
