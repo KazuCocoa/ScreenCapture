@@ -5,7 +5,9 @@ android:
     - android-19
     - sysimg-19
     - extra-android-support
-
+  licenses:
+    - android-sdk-license-bcbbd656
+    - '.*intel.+'
 
 # blacklist
 #branches:
@@ -21,6 +23,8 @@ branches:
 #before_install
 #install
 #before_script
-#script
+
+script: ./gradlew assembleBuild
+
 #after_success or after_failure
 #after_script
