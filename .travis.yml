@@ -2,11 +2,11 @@ language: android
 android:
   components:
     - build-tools-19.1.0
-    - android-19.1
-    - sysimg-19.1
+    - android-19
+    - sysimg-19
     - extra-android-support
   licenses:
-    - android-sdk-license-bcbbd656
+    - android-sdk-license-5be876d5 # new license!
     - '.*intel.+'
 
 # blacklist
